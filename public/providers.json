@@ -1,0 +1,696 @@
+[
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "List Two",
+    "rating": 4.7,
+    "distance": 5,
+    "skill": "Plumbing",
+    "whatsapp": "0987654321",
+    "facebook": "Listtwo",
+    "linkedin": "Listtwo",
+    "email": "Listtwo@example.com",
+    "pricePerHour": 60,
+    "description": "Experienced plumber with 15 years of experience.",
+    "services": [
+      { "value": "Pipe installation", "label": "Pipe installation" },
+      { "value": "Leak repairs", "label": "Leak repairs" },
+      { "value": "Drain cleaning", "label": "Drain cleaning" },
+      {
+        "value": "Water heater installation",
+        "label": "Water heater installation"
+      }
+    ],
+    "location": "Los Angeles, California",
+    "latitude": 34.0522,
+    "longitude": -118.2437,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Tuesday",
+          "slots": ["10:00 AM", "12:00 PM", "2:00 PM"]
+        },
+        {
+          "day": "Thursday",
+          "slots": ["10:00 AM", "12:00 PM", "2:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-20",
+          "slots": ["9:00 AM", "1:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Fantastic work.",
+        "author": "Alice Johnson"
+      },
+      { "rating": 4, "comment": "Very reliable.", "author": "Bob Brown" }
+    ],
+    "workHistory": [
+      {
+        "title": "Kitchen Renovation",
+        "date": "Feb 15, 2024 - Feb 20, 2024",
+        "feedback": "Excellent plumbing job.",
+        "price": "$500.00",
+        "rate": "$50.00/hr",
+        "hours": 10,
+        "review": {
+          "rating": 5,
+          "comment": "Fantastic work.",
+          "author": "Alice Johnson"
+        }
+      },
+      {
+        "title": "Bathroom Fix",
+        "date": "Mar 5, 2024 - Mar 6, 2024",
+        "feedback": "Quick and neat.",
+        "price": "$120.00",
+        "rate": "$60.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very reliable.",
+          "author": "Bob Brown"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 1,
+    "name": "List One",
+    "rating": 4.5,
+    "distance": 10,
+    "skill": "Electrical Repair",
+    "whatsapp": "1234567890",
+    "facebook": "Listone",
+    "linkedin": "Listone",
+    "email": "Listone@example.com",
+    "pricePerHour": 50,
+    "description": "Expert in electrical repairs with 10 years of experience.",
+    "services": [
+      { "value": "Wiring installation", "label": "Wiring installation" },
+      { "value": "Circuit repairs", "label": "Circuit repairs" },
+      { "value": "Lighting installation", "label": "Lighting installation" },
+      { "value": "Outlet installation", "label": "Outlet installation" }
+    ],
+    "location": "New York, New York",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "availability": {
+      "weekly": [
+        {
+          "day": "Monday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        },
+        {
+          "day": "Wednesday",
+          "slots": ["9:00 AM", "11:00 AM", "1:00 PM"]
+        }
+      ],
+      "specificDates": [
+        {
+          "date": "2024-07-15",
+          "slots": ["10:00 AM", "2:00 PM"]
+        }
+      ]
+    },
+    "reviews": [
+      {
+        "rating": 5,
+        "comment": "Excellent service.",
+        "author": "John Smith"
+      },
+      { "rating": 4, "comment": "Very good.", "author": "Jane Doe" }
+    ],
+    "workHistory": [
+      {
+        "title": "Home Rewiring",
+        "date": "Mar 10, 2024 - Mar 12, 2024",
+        "feedback": "Thorough and professional.",
+        "price": "$200.00",
+        "rate": "$40.00/hr",
+        "hours": 5,
+        "review": {
+          "rating": 5,
+          "comment": "Excellent service.",
+          "author": "John Smith"
+        }
+      },
+      {
+        "title": "Fuse Box Repair",
+        "date": "Apr 5, 2024 - Apr 6, 2024",
+        "feedback": "Quick and efficient.",
+        "price": "$80.00",
+        "rate": "$40.00/hr",
+        "hours": 2,
+        "review": {
+          "rating": 4,
+          "comment": "Very good.",
+          "author": "Jane Doe"
+        }
+      }
+    ]
+  }
+]

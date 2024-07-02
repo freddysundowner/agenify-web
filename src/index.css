@@ -1,0 +1,87 @@
+/* index.css */
+
+/* Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  font-family: "Hero", sans-serif;
+  overflow: hidden;
+}
+
+.scrollable-featured-Lists {
+  max-height: calc(100vh - 4rem); /* Adjust based on your layout */
+  overflow-y: auto;
+}
+/* Custom styles for the search bar */
+.search-bar {
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  z-index: 1000;
+}
+
+.search-result {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.search-result:last-child {
+  border-bottom: none;
+}
+
+.List-drawer {
+  width: 20rem;
+  background-color: white;
+  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+}
+
+.List-drawer-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+  display: flex;
+  justify-end: right;
+}
+@font-face {
+  font-family: "Hero";
+  src: url("/fonts/Hero-Bold.otf") format("opentype"),
+    url("/fonts/Hero-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hero";
+  src: url("/fonts/Hero-Regular.otf") format("opentype"),
+    url("/fonts/Hero-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hero";
+  src: url("/fonts/Hero-Light.otf") format("opentype"),
+    url("/fonts/Hero-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}

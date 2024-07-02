@@ -1,0 +1,14 @@
+.react-calendar {
+  width: 100%;
+  border: none;
+}
+
+.react-calendar__tile--now {
+  background: #5e60b9 !important;
+  color: white !important;
+}
+
+.react-calendar__tile--active {
+  background: #4eb5b5 !important;
+  color: white !important;
+}
