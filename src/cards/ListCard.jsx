@@ -28,7 +28,6 @@ const ListCard = ({ list }) => {
   };
 
   useEffect(() => {
-    console.log(subscribedItems);
     setSubscribers(subscribedItems?.find((item) => item.id === list?.id));
   }, [subscribedItems])
 

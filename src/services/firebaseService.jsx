@@ -25,6 +25,25 @@ export const fetchServices = async () => {
   }));
   return servicesList;
 };
+export const getCategories = async () => {
+  console.log("fetching categories");
+  const querySnapshot = await getDocs(collection(db, "categories"));
+  const categoriesList = querySnapshot.docs.map((doc) => {
+    return {
+      value: doc.id,
+      label: doc.data().name,
+    };
+  });
+  return categoriesList;
+}
+export const getSubCategories = async (categoryId) => {
+  console.log("fetching subcategories", categoryId);
+  const querySnapshot = await getDocs(collection(db, "categories", categoryId, "subcategories"));
+  const subCategoriesList = querySnapshot.docs.map((doc) => {
+    return { value: doc.id, label: doc.data().name };
+  });
+  return subCategoriesList;
+}
 export const updateListAvailability = async (userId, services) => {
   console.log("updateListAvailability", userId, services);
   const userDocRef = doc(db, "users", userId);
@@ -55,20 +74,21 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
 
 export const getListings = async (List) => {
   console.log("getListings", List);
-  // const getCurrentPosition = () => {
-  //   return new Promise((resolve, reject) => {
-  //     navigator.geolocation.getCurrentPosition(resolve, reject);
-  //   });
-  // };
+  const getCurrentPosition = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  };
 
-  // const position = await getCurrentPosition();
-  // const userLat = position.coords.latitude;
-  // const userLon = position.coords.longitude;
+  const position = await getCurrentPosition();
+  console.log(position);
+  const userLat = position.coords.latitude;
+  const userLon = position.coords.longitude;
 
   let usersQuery = query(
-    collection(db, "items")
+    collection(db, "items"),
     // where("isList", "==", true),
-    // orderBy("distance", "asc")
+    orderBy("distance", "asc")
   );
   if (List) {
     // usersQuery = query(usersQuery, where("id", "!=", List.id));
@@ -77,18 +97,19 @@ export const getListings = async (List) => {
   const querySnapshot = await getDocs(usersQuery);
   const listings = querySnapshot.docs.map((doc) => {
     const listingData = doc.data();
-    // const listLocation = listingData.position?.geopoint;
-    // const distance = calculateDistance(
-    //   userLat,
-    //   userLon,
-    //   listLocation._lat,
-    //   listLocation._long
-    // );
+    const listLocation = listingData.position?.geopoint;
+    console.log(listLocation);
+    const distance = calculateDistance(
+      userLat,
+      userLon,
+      listLocation._lat,
+      listLocation._long
+    );
 
     return {
       id: doc.id,
       ...listingData,
-      distance: 0, //distance.toFixed(2),
+      distance: distance.toFixed(2),
     };
   });
   // console.log(listings);
@@ -173,7 +194,6 @@ export const addMessageToFirestore = async (message) => {
 };
 
 export const getInboxMessages = (currentUser, callback) => {
-  console.log("getInboxMessages", currentUser);
   const q = query(
     collection(db, "inbox"),
     where("users", "array-contains", currentUser?.uid)
@@ -188,13 +208,11 @@ export const getInboxMessages = (currentUser, callback) => {
 };
 
 export const updateMessageInFirestore = async (threadId, messageId, data) => {
-  console.log("updateMessageInFirestore", threadId, messageId, data);
   const messageDocRef = doc(db, "inbox", threadId, "messages", messageId);
   await updateDoc(messageDocRef, data);
 };
 
 export const getAllMessages = (currentUserUid, recipientUserUid, callback) => {
-  console.log("getAllMessages", currentUserUid, recipientUserUid);
   const q = query(
     collection(db, "inbox"),
     where("users", "array-contains", currentUserUid)
@@ -274,7 +292,6 @@ export const getUnreadCount = async (threadId, userId) => {
 
 
 export const addtoFavorite = async (userId, data) => {
-  console.log("addtoFavorite", userId, data);
   //add to subcollection of users collection
   const userDocRef = doc(db, "users", userId);
   const favoritesCollectionRef = collection(userDocRef, 'favorites');
@@ -287,7 +304,6 @@ export const addtoFavorite = async (userId, data) => {
   }
 }
 export const itemSubscribe = async (itemid, data) => {
-  console.log("itemSubscribe", itemid, data);
   //add to subcollection of users collection
   const itemDocRef = doc(db, "items", itemid);
   const itemsCollectionRef = collection(itemDocRef, 'subscribers');
@@ -334,7 +350,6 @@ export const removeItemSubscribedtoUser = async (userid, itemid) => {
 }
 
 export const removefavorite = async (userId, data) => {
-  console.log("removefavorite", userId, data);
   const userDocRef = doc(db, "users", userId);
   const favoritesCollectionRef = collection(userDocRef, 'favorites');
   const q = query(favoritesCollectionRef, where("id", "==", data.id));
@@ -345,7 +360,6 @@ export const removefavorite = async (userId, data) => {
 }
 
 export const fetchUserFavorites = async (userId) => {
-  console.log("fetchUserFavorites", userId);
   try {
     const userDocRef = doc(db, "users", userId);
     const favoritesCollectionRef = collection(userDocRef, "favorites");
@@ -359,7 +373,6 @@ export const fetchUserFavorites = async (userId) => {
 };
 
 export const getSubscribedItems = async (userId) => {
-  console.log("getSubscribedItems", userId);
   try {
     const userDocRef = doc(db, "users", userId);
     const favoritesCollectionRef = collection(userDocRef, "subscribed");

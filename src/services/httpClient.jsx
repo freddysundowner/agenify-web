@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Set up the base URL for Axios
 const apiClient = axios.create({
-  baseURL: "http://localhost:5000", // Change this to your backend server URL
+  baseURL: "http://localhost:9977", // Change this to your backend server URL
   headers: {
     "Content-Type": "application/json",
   },
@@ -17,9 +17,9 @@ export const fetchServices = async () => {
 
 // Get place details from Google Places API
 export const getPlaceDetails = async (placeId) => {
-  const response = await apiClient.get("/api/place-details", {
+  const response = await apiClient.get("/place/place-details", {
     params: { placeId },
   });
   console.log(response.data);
-  return response.data.result.geometry.location;
+  return response.data.location;
 };

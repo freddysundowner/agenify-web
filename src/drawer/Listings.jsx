@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Drawer from "./Drawer";
 import TaskBoard from "./TaskBoard";
-import Transactions from "../components/MyListings/Transactions";
-import { FiUser, FiList } from "react-icons/fi";
 import ListingForm from "../components/MyListings/ListingForm";
 const Listings = ({ isOpen = false, onClose = () => {} }) => {
   const [currentSection, setCurrentSection] = useState("account");
