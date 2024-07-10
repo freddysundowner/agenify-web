@@ -11,7 +11,7 @@ const NotificationIcon = ({}) => {
   const { inbox: inboxes, setInbox } = useContext(ChatContext);
   const { openDrawer } = useContext(DrawerContext);
   const [unreadCounts, setUnreadCounts] = useState(0);
-  const List = useSelector((state) => state.List.currentList);
+  const List = useSelector((state) => state.user.currentUser);
   const { currentUser } = useAuth();
 
   useEffect(() => {
