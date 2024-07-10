@@ -1,8 +1,6 @@
 // FeaturedLists.js
 import React from "react";
-import ListCard from "../cards/ListCard"; // Import the ListCard component
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import ListCard from "../cards/ListCard"; 
 import { useSelector } from "react-redux";
 const FeaturedLists = () => {
   const lists = useSelector((state) => state.user.Lists);

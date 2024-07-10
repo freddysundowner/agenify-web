@@ -9,7 +9,6 @@ import NotificationIcon from "../sharable/NotificationIcon";
 import DrawerContext from "../context/DrawerContext";
 import { useSelector } from "react-redux";
 import TaskBoard from "../drawer/TaskBoard";
-import { getInboxMessages } from "../services/firebaseService";
 import ChatContext from "../context/ChatContext";
 
 function Menu({ List }) {
@@ -22,7 +21,7 @@ function Menu({ List }) {
   const { currentUser } = useAuth();
   const { openDrawer, closeDrawer } = useContext(DrawerContext);
   const { setInbox } = useContext(ChatContext);
-  const currentList = useSelector((state) => state.List.currentList);
+  const currentList = useSelector((state) => state.user.currentUser);
 
   const handleBecomeList = async () => {
     openDrawer("becomeList", List);

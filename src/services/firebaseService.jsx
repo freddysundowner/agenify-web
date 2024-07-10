@@ -12,10 +12,12 @@ import {
   setDoc,
   getDoc,
   increment,
+  deleteDoc
 } from "firebase/firestore";
 import { db } from "../auth/firebaseConfig";
 
 export const fetchServices = async () => {
+  console.log("fetching services");
   const querySnapshot = await getDocs(collection(db, "services"));
   const servicesList = querySnapshot.docs.map((doc) => ({
     value: doc.id,
@@ -24,11 +26,13 @@ export const fetchServices = async () => {
   return servicesList;
 };
 export const updateListAvailability = async (userId, services) => {
+  console.log("updateListAvailability", userId, services);
   const userDocRef = doc(db, "users", userId);
   await updateDoc(userDocRef, { services });
 };
 
 export const updateListData = async (userId, data) => {
+  console.log("updateListData", userId, data);
   const userDocRef = doc(db, "users", userId);
   await updateDoc(userDocRef, data);
 };
@@ -42,14 +46,15 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(toRadians(lat1)) *
-      Math.cos(toRadians(lat2)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos(toRadians(lat2)) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c; // Distance in kilometers
 };
 
 export const getListings = async (List) => {
+  console.log("getListings", List);
   // const getCurrentPosition = () => {
   //   return new Promise((resolve, reject) => {
   //     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -91,6 +96,7 @@ export const getListings = async (List) => {
   return listings;
 };
 export const getThreadId = async (currentUserId, recipientUserId) => {
+  console.log("getThreadId", currentUserId, recipientUserId);
   console.log(
     "currentUserId",
     currentUserId,
@@ -120,6 +126,7 @@ export const getThreadId = async (currentUserId, recipientUserId) => {
   }
 };
 export const addMessageToFirestore = async (message) => {
+  console.log("addMessageToFirestore", message);
   try {
     let threadId = await getThreadId(
       message?.sender?.id,
@@ -166,6 +173,7 @@ export const addMessageToFirestore = async (message) => {
 };
 
 export const getInboxMessages = (currentUser, callback) => {
+  console.log("getInboxMessages", currentUser);
   const q = query(
     collection(db, "inbox"),
     where("users", "array-contains", currentUser?.uid)
@@ -180,11 +188,13 @@ export const getInboxMessages = (currentUser, callback) => {
 };
 
 export const updateMessageInFirestore = async (threadId, messageId, data) => {
+  console.log("updateMessageInFirestore", threadId, messageId, data);
   const messageDocRef = doc(db, "inbox", threadId, "messages", messageId);
   await updateDoc(messageDocRef, data);
 };
 
 export const getAllMessages = (currentUserUid, recipientUserUid, callback) => {
+  console.log("getAllMessages", currentUserUid, recipientUserUid);
   const q = query(
     collection(db, "inbox"),
     where("users", "array-contains", currentUserUid)
@@ -229,6 +239,7 @@ export const getAllMessages = (currentUserUid, recipientUserUid, callback) => {
 };
 
 export const markLatestMessageAsRead = async (threadId, userId) => {
+  console.log("markLatestMessageAsRead", threadId, userId);
   const threadRef = doc(db, "inbox", threadId);
   await updateDoc(threadRef, {
     [`read.${userId}`]: true,
@@ -237,6 +248,7 @@ export const markLatestMessageAsRead = async (threadId, userId) => {
 
 // Call this function when the user opens the inbox or chat
 export const onInboxOrChatOpen = async (threadId, currentUserId) => {
+  console.log("onInboxOrChatOpen", threadId, currentUserId);
   await markLatestMessageAsRead(threadId, currentUserId);
   await resetUnreadCount(threadId, currentUserId);
 };
@@ -250,6 +262,7 @@ const resetUnreadCount = async (threadId, userId) => {
 };
 
 export const getUnreadCount = async (threadId, userId) => {
+  console.log("getUnreadCount", threadId, userId);
   const threadRef = doc(db, "inbox", threadId);
   const threadDoc = await getDoc(threadRef);
   if (threadDoc.exists()) {
@@ -258,3 +271,104 @@ export const getUnreadCount = async (threadId, userId) => {
   }
   return 0;
 };
+
+
+export const addtoFavorite = async (userId, data) => {
+  console.log("addtoFavorite", userId, data);
+  //add to subcollection of users collection
+  const userDocRef = doc(db, "users", userId);
+  const favoritesCollectionRef = collection(userDocRef, 'favorites');
+  const q = query(favoritesCollectionRef, where("id", "==", data.id));
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot.empty) {
+    await addDoc(favoritesCollectionRef, data);
+  } else {
+    await deleteDoc(querySnapshot.docs[0].ref);
+  }
+}
+export const itemSubscribe = async (itemid, data) => {
+  console.log("itemSubscribe", itemid, data);
+  //add to subcollection of users collection
+  const itemDocRef = doc(db, "items", itemid);
+  const itemsCollectionRef = collection(itemDocRef, 'subscribers');
+  const q = query(itemsCollectionRef, where("id", "==", data.id));
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot.empty) {
+    await addDoc(itemsCollectionRef, data);
+    await addItemSubscribedtoUser(data.id, itemid);
+  } else {
+    await deleteDoc(querySnapshot.docs[0].ref);
+    await removeItemSubscribedtoUser(data.id, itemid);
+  }
+}
+
+const addItemSubscribedtoUser = async (userid, itemid) => {
+  console.log("addItemSubscribedtoUser", userid, itemid);
+  const userDocRef = doc(db, "users", userid);
+  const subscribedRef = collection(userDocRef, 'subscribed');
+  const q = query(subscribedRef, where("id", "==", itemid));
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot.empty) {
+    await addDoc(subscribedRef, { id: itemid });
+  }
+}
+
+export const removeItemSubscribedtoUser = async (userid, itemid) => {
+  console.log("removeItemSubscribedtoUser", userid, itemid);
+  const userDocRef = doc(db, "users", userid);
+  const subscribedRef = collection(userDocRef, 'subscribed');
+  const q = query(subscribedRef, where("id", "==", itemid));
+  const querySnapshot = await getDocs(q);
+  if (!querySnapshot.empty) {
+    await deleteDoc(querySnapshot.docs[0].ref);
+  }
+
+
+  const itemDocRef = doc(db, "items", itemid);
+  const subscribersRef = collection(itemDocRef, 'subscribers');
+  const q1 = query(subscribersRef, where("id", "==", userid));
+  const querySnapshot1 = await getDocs(q1);
+  if (!querySnapshot1.empty) {
+    await deleteDoc(querySnapshot1.docs[0].ref);
+  }
+}
+
+export const removefavorite = async (userId, data) => {
+  console.log("removefavorite", userId, data);
+  const userDocRef = doc(db, "users", userId);
+  const favoritesCollectionRef = collection(userDocRef, 'favorites');
+  const q = query(favoritesCollectionRef, where("id", "==", data.id));
+  const querySnapshot = await getDocs(q);
+  if (!querySnapshot.empty) {
+    await deleteDoc(querySnapshot.docs[0].ref);
+  }
+}
+
+export const fetchUserFavorites = async (userId) => {
+  console.log("fetchUserFavorites", userId);
+  try {
+    const userDocRef = doc(db, "users", userId);
+    const favoritesCollectionRef = collection(userDocRef, "favorites");
+    const favoritesSnapshot = await getDocs(favoritesCollectionRef);
+    const favoriteIds = favoritesSnapshot.docs.map((doc) => { return { id: doc.data()?.id } });
+    return favoriteIds;
+  } catch (error) {
+    console.error("Error fetching user favorites: ", error);
+    throw error;
+  }
+};
+
+export const getSubscribedItems = async (userId) => {
+  console.log("getSubscribedItems", userId);
+  try {
+    const userDocRef = doc(db, "users", userId);
+    const favoritesCollectionRef = collection(userDocRef, "subscribed");
+    const subscriSnapshot = await getDocs(favoritesCollectionRef);
+    const ids = subscriSnapshot.docs.map((doc) => { return { id: doc.data()?.id } });
+    return ids;
+  } catch (error) {
+    console.error("Error fetching user favorites: ", error);
+    throw error;
+  }
+
+}

@@ -4,19 +4,33 @@ import DrawerContext from "../context/DrawerContext";
 import Menu from "../components/Menu";
 import ChatContext from "../context/ChatContext";
 import { useSelector } from "react-redux";
-import { getInboxMessages } from "../services/firebaseService";
+import { getInboxMessages, fetchUserFavorites, getSubscribedItems } from "../services/firebaseService";
 import { useAuth } from "../context/AuthContext";
+import { setFavorites, setSubscribedItems } from "../redux/features/userSlice";
+import { useDispatch } from "react-redux";
 
-const NotificationIcon = ({}) => {
+const NotificationIcon = ({ }) => {
   const { inbox: inboxes, setInbox } = useContext(ChatContext);
   const { openDrawer } = useContext(DrawerContext);
   const [unreadCounts, setUnreadCounts] = useState(0);
-  const List = useSelector((state) => state.List.currentList);
+  const user = useSelector((state) => state.user.currentUser);
   const { currentUser } = useAuth();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribe = getInboxMessages(currentUser, setInbox);
     return () => unsubscribe();
+  }, [currentUser]);
+
+  useEffect(() => {
+    fetchUserFavorites(currentUser?.uid).then((res) => {
+      dispatch(setFavorites(res));
+    })
+
+
+    getSubscribedItems(currentUser?.uid).then((subscribers) => {
+      dispatch(setSubscribedItems(subscribers));
+    });
   }, [currentUser]);
 
   useEffect(() => {
@@ -29,7 +43,7 @@ const NotificationIcon = ({}) => {
   }, [inboxes]);
 
   const handleRatingsClick = () => {
-    openDrawer("inboxDrawer", List, inboxes);
+    openDrawer("inboxDrawer", user, inboxes);
   };
 
   return (

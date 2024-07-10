@@ -9,7 +9,7 @@ body {
   overflow: hidden;
 }
 
-.scrollable-featured-Lists {
+.scrollable-featured-lists {
   max-height: calc(100vh - 4rem); /* Adjust based on your layout */
   overflow-y: auto;
 }
@@ -85,3 +85,10 @@ body {
   font-weight: 300;
   font-style: normal;
 }
+ .scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+} 

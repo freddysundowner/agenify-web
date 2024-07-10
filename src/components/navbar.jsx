@@ -1,4 +1,4 @@
-import { FaUserCircle } from "react-icons/fa";
+import { FaStar, FaUserCircle } from "react-icons/fa";
 import { AiOutlineHome, AiOutlineStar } from "react-icons/ai";
 import { FiMapPin } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
@@ -34,6 +34,12 @@ const NavBar = () => {
           >
             <FiMapPin className="text-xl" />
             <span className="text-purple-500">Browse</span>
+          </a>
+          <a
+            href="/browse"
+            className="flex items-center  hover:text-purple-500"
+          >
+            <FaStar color="orange" size={24} />
           </a>
 
           {!currentUser ? (

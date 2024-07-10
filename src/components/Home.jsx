@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { store } from "../redux/store";
 import SearchBar from "./SearchBar";
-import FeaturedProviders from "./FeaturedLists";
+import FeaturedListings from "./FeaturedLists";
 import Menu from "./Menu";
 import SearchResults from "../drawer/SearchResults";
 import DrawerContext, { DrawerProvider } from "../context/DrawerContext";
@@ -159,8 +159,8 @@ const Home = () => {
             providers={[]}
           />
         </GoogleMap>
-        <div className="w-[43%] mt-24 scrollable-featured-providers  bg-[#ededed]">
-          <FeaturedProviders />
+        <div className="lg:w-[57%] w-[43%] mt-24 scrollable-featured-lists  bg-[#ededed]">
+          <FeaturedListings />
         </div>
       </div>
       {drawerState.searchDrawer.isOpen && (

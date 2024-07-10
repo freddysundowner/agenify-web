@@ -38,7 +38,16 @@ export const signUp = async (email, password, username) => {
     const user = userCredential.user;
     const userData = {
       email: user.email,
-      username,
+      accountname: username,
+      phonenumber: "",
+      offlinestatus: false,
+      uid: user.uid,
+      liked: [],
+      imageurl: "",
+      code: "",
+      country: "",
+      currency: "",
+
     };
     await setDoc(doc(db, "users", user.uid), userData);
     store.dispatch(setUser(userData)); // Dispatch to save in Redux

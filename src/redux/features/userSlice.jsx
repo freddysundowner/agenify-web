@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   currentUser: null,
   Lists: [],
+  favorites: [],
+  subscribedItems: [],
 };
 
 const UserSlice = createSlice({
@@ -21,8 +23,14 @@ const UserSlice = createSlice({
     setLists: (state, action) => {
       state.Lists = action.payload;
     },
+    setFavorites: (state, action) => {
+      state.favorites = action.payload;
+    },
+    setSubscribedItems: (state, action) => {
+      state.subscribedItems = action.payload;
+    },
   },
 });
 
-export const { updateUser, setUser, clearUser, setLists } = UserSlice.actions;
+export const { updateUser, setUser, clearUser, setLists, setFavorites, setSubscribedItems } = UserSlice.actions;
 export default UserSlice.reducer;
